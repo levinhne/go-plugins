@@ -26,5 +26,5 @@ func (conf Config) Access(kong *pdk.PDK) {
 	if message == "" {
 		message = "hello"
 	}
-	kong.Response.SetHeader("x-hello-from-go", fmt.Sprintf("Go says %s to %s", message, host))
+	kong.Response.Exit(200, "{\"message\": "+message+"}", map[string][]string{"Content-type": []string{"application/json"}})
 }
