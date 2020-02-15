@@ -6,11 +6,10 @@ package main
 
 import (
 	"github.com/Kong/go-pdk"
-	"github.com/go-resty/resty/v2"
 )
 
 type Config struct {
-	Url string
+	Message string
 }
 
 func New() interface{} {
@@ -18,14 +17,9 @@ func New() interface{} {
 }
 
 func (conf Config) Access(kong *pdk.PDK) {
-	Url := conf.Url
-	if Url == "" {
-		Url = "https://httpbin.org/get"
+	message := conf.Message
+	if message == "" {
+		message = "hello"
 	}
-	client := resty.New()
-
-	resp, _ := client.R().
-		EnableTrace().
-		Get(Url)
-	kong.Response.Exit(200, resp.String(), map[string][]string{"Content-type": []string{"application/json"}})
+	kong.Response.Exit(200, "{\"message\": \""+message+"\"}", map[string][]string{"Content-type": []string{"application/json"}})
 }
