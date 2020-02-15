@@ -5,7 +5,6 @@ which reads a request header and sets a response header.
 package main
 
 import (
-	"fmt"
 	"github.com/Kong/go-pdk"
 )
 
