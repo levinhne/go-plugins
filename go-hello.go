@@ -17,10 +17,6 @@ func New() interface{} {
 }
 
 func (conf Config) Access(kong *pdk.PDK) {
-	host, err := kong.Request.GetHeader("host")
-	if err != nil {
-		kong.Log.Err(err.Error())
-	}
 	message := conf.Message
 	if message == "" {
 		message = "hello"
