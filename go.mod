@@ -1,4 +1,4 @@
-module github.com/Kong/go-plugins
+module github.com/levinhne/go-plugins
 
 go 1.13
 
